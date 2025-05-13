@@ -1,0 +1,30 @@
+﻿@using MvcStock.Models.Entity;
+@model List<TBLMUSTERILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>MÜŞTERİ ID</th>
+        <th>MÜŞTERİ AD</th>
+        <th>MÜŞTERİ SOYAD</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach(var mstr in Model)
+         {
+             <tr>
+                 <th>@mstr.MUSTERIID</th>
+                 <td>@mstr.MUSTERIAD</td>
+                 <td>@mstr.MUSTERISOYAD</td>
+                 <td><a href="/MUSTERI/SIL/@mstr.MUSTERIID" class="btn btn-danger">SİL</a></td>
+                 <td><a href="/MUSTERI/MusteriGetir/@mstr.MUSTERIID" class="btn btn-success">GÜNCELLE</a></td>
+             </tr>
+         }
+        
+    </tbody>
+</table>
+<td><a href="/MUSTERI/YeniMusteri/" class="btn btn-primary">YENİ MÜŞTERİ EKLE</a></td>

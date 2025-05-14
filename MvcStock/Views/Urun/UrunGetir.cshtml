@@ -9,17 +9,17 @@
     <div>
         <label>Ürün ID</label>
         @Html.TextBoxFor(m => m.URUNID, new { @class = "form-control" })
-        @*@Html.ValidationMessageFor(m=>m.URUNAD,"",new (@style="color:red"))*@
         <br />
         <label>Ürün Adı</label>
         @Html.TextBoxFor(m => m.URUNAD, new { @class = "form-control" })
-        @*@Html.ValidationMessageFor(m=>m.URUNAD,"",new (@style="color:red"))*@
         <br />
         <label>Marka</label>
         @Html.TextBoxFor(m => m.MARKA, new { @class = "form-control" })
+
         <br />
         <label>Kategori</label>
         @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+
         <br />
         <label>Fiyat</label>
         @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control" })

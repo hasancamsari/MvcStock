@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcStock.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcStock.Controllers
 {
@@ -13,9 +15,10 @@ namespace MvcStock.Controllers
         MvcDbStockEntities db = new MvcDbStockEntities();//tablolara ulaşır
 
 
-        public ActionResult Index()
+        public ActionResult Index(int sayfa = 1)
         {
-            var degerler = db.TBLKATEGORILER.ToList();//değerler listelenir
+            var degerler = db.TBLKATEGORILER.ToList().ToPagedList(sayfa, 4);
+         //   var degerler = db.TBLKATEGORILER.ToList();//değerler listelenir
             return View(degerler);//degerler döndürülür
         }
         [HttpGet]
@@ -35,7 +38,7 @@ namespace MvcStock.Controllers
             {
                 db.TBLKATEGORILER.Add(p1);
                 db.SaveChanges();
-                return View();
+                return RedirectToAction("Index");
             }
         }
 

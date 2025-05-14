@@ -7,15 +7,15 @@
 <form class="form-group" method="post">
     <div>
         <label>Ürün Adı</label>
-        <input type="text" class="form-control" name="URUNAD" />
+        <input type="text" class="form-control" name="URUNAD" placeholder="Ürün adını giriniz" required="" maxlength="50"/>
         <label>Marka</label>
-        <input type="text" class="form-control" name="MARKA" />
+        <input type="text" class="form-control" name="MARKA" placeholder="Marka giriniz" required="" maxlength="50"/>
         <label>Kategori Seçiniz</label>
-        @Html.DropDownListFor(m=>m.TBLKATEGORILER.KATEGORIID,/* m.karagoriid için model belirlendi*/(List<SelectListItem>)ViewBag.dgr/*viewbag çağırma*/, new {@class = "form-control"}/*diğerleriyle uyumlu olsun diye*/)
+        @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID,/* m.karagoriid için model belirlendi*/(List<SelectListItem>)ViewBag.dgr/*viewbag çağırma*/, new { @class = "form-control" }/*diğerleriyle uyumlu olsun diye*/)
         <label>Fiyat</label>
-        <input type="text" class="form-control" name="FIYAT" />
+        <input type="number" class="form-control" name="FIYAT" placeholder="Fiyat giriniz" required="" />
         <label>Kalan Stok</label>
-        <input type="text" class="form-control" name="STOK" />
+        <input type="number" class="form-control" name="STOK" placeholder="Stok adeti giriniz" required=""/>
     </div>
     <div style="margin-top:15px ">
         <button class="btn btn-info">Ürün Ekle</button>

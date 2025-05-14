@@ -5,6 +5,8 @@ using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 using MvcStock.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcStock.Controllers
 {
@@ -12,10 +14,11 @@ namespace MvcStock.Controllers
     {
         // GET: Urun
         MvcDbStockEntities db = new MvcDbStockEntities ();//database bağlama
-        public ActionResult Index()
-        {
-            var degeler = db.TBLURUNLER.ToList();
-            return View(degeler);
+        public ActionResult Index(int sayfa = 1)
+        {   
+            var degerler = db.TBLURUNLER.ToList().ToPagedList(sayfa, 4);
+            //var degerler = db.TBLURUNLER.ToList();
+            return View(degerler);
         }
 
         [HttpGet]
@@ -33,7 +36,7 @@ namespace MvcStock.Controllers
 
         [HttpPost]
         public ActionResult UrunEkle(TBLURUNLER p1)
-        {   
+        {
             var ktg= db.TBLKATEGORILER.Where(m=>m.KATEGORIID==p1.TBLKATEGORILER.KATEGORIID).FirstOrDefault();//seçilen ilk değeri getirir
             p1.TBLKATEGORILER = ktg;
             db.TBLURUNLER.Add(p1);
@@ -69,7 +72,9 @@ namespace MvcStock.Controllers
             urn.URUNID = p.URUNID;
             urn.URUNAD = p.URUNAD;
             urn.MARKA =  p.MARKA;
-            //urn.URUNKATAGORI = p1.URUNKATAGORI;
+            //urn.URUNKATAGORI = p.TBLKATEGORILER.KATEGORIID;
+            var ktg = db.TBLKATEGORILER.Where(m => m.KATEGORIID == p.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
+            urn.URUNKATAGORI = ktg.KATEGORIID;
             urn.FIYAT = p.FIYAT;
             urn.STOK = p.STOK;
             db.SaveChanges();

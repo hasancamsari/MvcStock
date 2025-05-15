@@ -14,11 +14,17 @@ namespace MvcStock.Controllers
     {
         // GET: Musteri
         MvcDbStockEntities db = new MvcDbStockEntities();
-        public ActionResult Index(int sayfa = 1)
+        public ActionResult Index(/*int sayfa = 1*/ string p)
         {
-            var degerler = db.TBLMUSTERILER.ToList().ToPagedList(sayfa,4);
+            var degerler = from d in db.TBLMUSTERILER select d;
+            if (!string.IsNullOrEmpty(p))
+            {
+                degerler = degerler.Where(x => x.MUSTERIAD.Contains(p));
+            }
+            //var degerler = db.TBLMUSTERILER.ToList().ToPagedList(sayfa,4);
             //var degerler = db.TBLMUSTERILER.ToList();
-            return View(degerler);
+            ViewBag.Arama = degerler;
+            return View(degerler.ToList());
         }
         [HttpGet]
         public ActionResult YeniMusteri()

@@ -25,13 +25,33 @@
                 <li><a href="/Urun/Index/">Ürünler</a></li>
                 <li><a href="/Musteri/Index/">Müşteriler</a></li>
                 <li><a href="/Satis/Index/">Satışlar</a></li>
-                <li><a href="/Yardim/Index/">Yardım</a></li>
+                <li><a href="/Yardim/Index/" data-toggle="modal" data-target="#Modal2">Yardım</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
         @RenderBody()
+    </div>
+
+    <div class="modal" id="Modal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Yardım
+                </div>
+                <br />
+                <div class="modal-body">
+                    Bu proje MVC yapısında geliştirilmiştir. Bu projede CRUD işlemleri yapılmaktadır. Proje içerisinde Kategori, Ürün, Müşteri ve Satış işlemleri bulunmaktadır. Proje içerisinde Bootstrap kütüphanesi kullanılmıştır.
+                    <br />
+                    <br
+                    <tr><a href="/Kategori/Index/" class="btn btn-success">Anasayfaya Dön</a></tr>
+                </div>
+                <div class="modal-footer" style="background-color: dimgray">
+                 
+
+                </div>
+            </div>
     </div>
 
 </body>

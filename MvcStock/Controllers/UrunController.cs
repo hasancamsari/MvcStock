@@ -14,10 +14,10 @@ namespace MvcStock.Controllers
     {
         // GET: Urun
         MvcDbStockEntities db = new MvcDbStockEntities ();//database bağlama
-        public ActionResult Index(int sayfa = 1)
+        public ActionResult Index(/*int sayfa = 1*/)
         {   
-            var degerler = db.TBLURUNLER.ToList().ToPagedList(sayfa, 4);
-            //var degerler = db.TBLURUNLER.ToList();
+            //var degerler = db.TBLURUNLER.ToList().ToPagedList(sayfa, 4);
+            var degerler = db.TBLURUNLER.ToList();
             return View(degerler);
         }
 
